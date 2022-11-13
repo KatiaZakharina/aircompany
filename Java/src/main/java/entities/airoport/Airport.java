@@ -1,6 +1,7 @@
 package entities.airoport;
 
 import entities.planes.ExperimentalPlane;
+import models.ClassificationLevel;
 import models.MilitaryType;
 import entities.planes.MilitaryPlane;
 import entities.planes.PassengerPlane;
@@ -44,6 +45,17 @@ public class Airport {
         return getPlanesOfType(ExperimentalPlane.class);
     }
 
+    public List<ClassificationLevel> getClassificationLevelsInExperimentalPlanes() {
+        List<ClassificationLevel> classificationLevels = new ArrayList<>();
+        List<ExperimentalPlane> experimentalPlanes = getExperimentalPlanes();
+
+        for (ExperimentalPlane experimentalPlane : experimentalPlanes) {
+            classificationLevels.add(experimentalPlane.getClassificationLevel());
+        }
+
+        return classificationLevels;
+    }
+
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
         List<PassengerPlane> passengerPlanes = getPassengerPlanes();
         PassengerPlane planeWithMaxCapacity = passengerPlanes.get(0);
@@ -68,15 +80,6 @@ public class Airport {
         }
 
         return militaryPlanesOfType;
-    }
-
-    public List<MilitaryPlane> getTransportMilitaryPlanes() {
-        return getMilitaryPlanesOfType(MilitaryType.TRANSPORT);
-    }
-
-
-    public List<MilitaryPlane> getBomberMilitaryPlanes() {
-        return getMilitaryPlanesOfType(MilitaryType.BOMBER);
     }
 
     public Airport sortByMaxFlightDistance() {
