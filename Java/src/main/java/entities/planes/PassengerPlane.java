@@ -27,8 +27,9 @@ public class PassengerPlane extends Plane{
         if (this == o) return true;
         if (!(o instanceof PassengerPlane)) return false;
         if (!super.equals(o)) return false;
-        PassengerPlane plane = (PassengerPlane) o;
-        return passengersCapacity == plane.passengersCapacity;
+
+        PassengerPlane passengerPlane = (PassengerPlane) o;
+        return passengersCapacity == passengerPlane.passengersCapacity;
     }
 
     @Override
